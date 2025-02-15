@@ -13,6 +13,13 @@ export default {
 				foreground: 'var(--foreground)',
 			},
 		},
+		container:{
+			center: true,
+			padding: '1rem',
+			screens:{
+				'2xl':'1000px'
+			}
+		}
 	},
 	plugins: [
 		require('daisyui'),

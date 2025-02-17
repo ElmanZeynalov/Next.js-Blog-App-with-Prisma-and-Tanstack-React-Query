@@ -8,20 +8,15 @@ export default {
 	],
 	theme: {
 		extend: {
-			colors: {
-				background: 'var(--background)',
-				foreground: 'var(--foreground)',
-			},
+			colors: {},
 		},
-		container:{
+		container: {
 			center: true,
 			padding: '1rem',
-			screens:{
-				'2xl':'1000px'
-			}
-		}
+			screens: {
+				'2xl': '1000px',
+			},
+		},
 	},
-	plugins: [
-		require('daisyui'),
-	],
+	plugins: [require('daisyui')],
 } satisfies Config;

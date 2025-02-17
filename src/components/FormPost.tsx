@@ -5,12 +5,11 @@ import { FormInputPost } from '@/types';
 
 interface FormPostProps {
 	submit: SubmitHandler<FormInputPost>;
+	isEditing: boolean;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit }) => {
+const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
 	const { register, handleSubmit } = useForm<FormInputPost>();
-
-	// const submit = (data)=>console.log(data);
 
 	return (
 		<form onSubmit={handleSubmit(submit)} className="flex flex-col items-center justify-center gap-5 mt-10">
@@ -37,7 +36,7 @@ const FormPost: FC<FormPostProps> = ({ submit }) => {
 				<option>CSS</option>
 			</select>
 			<button type="submit" className="btn btn-primary w-full max-w-lg rounded-md">
-				Creat
+				{isEditing ? 'Update' : 'Create'}
 			</button>
 		</form>
 	);

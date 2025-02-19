@@ -38,7 +38,7 @@ async function BlogDetailPage({ params }: BlogDetailPageProps) {
 			</div>
 			<span className="badge badge-accent">{post?.Tag.name}</span>
 			<p className="text-slate-700">{post?.content}</p>
-			<ButtonAction />
+			<ButtonAction id={params.id} />
 		</div>
 	);
 }

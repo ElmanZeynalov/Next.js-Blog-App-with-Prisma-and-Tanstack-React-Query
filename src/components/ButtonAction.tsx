@@ -13,7 +13,7 @@ interface ButtonActionProps {
 
 function ButtonAction({ id }: ButtonActionProps) {
 	const router = useRouter();
-	const { mutate: deletePost, isLoading } = useMutation({
+	const { mutate: deletePost } = useMutation({
 		mutationFn: () => {
 			return axios.delete(`/api/posts/${id}`);
 		},
@@ -28,7 +28,7 @@ function ButtonAction({ id }: ButtonActionProps) {
 	});
 	return (
 		<div>
-			<Link href="/edit/id" className="btn mr-2">
+			<Link href={`/edit/${id}`} className="btn mr-2">
 				<PencilLine /> Edit
 			</Link>
 
@@ -36,17 +36,10 @@ function ButtonAction({ id }: ButtonActionProps) {
 				onClick={() => {
 					deletePost();
 				}}
-				disabled={isLoading}
 				className="btn btn-error"
 			>
-				{isLoading ? (
-					<span className="loading loading-spinner"></span>
-				) : (
-					<>
-						<Trash2 />
-						Delete
-					</>
-				)}
+				<Trash2 />
+				Delete
 			</button>
 		</div>
 	);

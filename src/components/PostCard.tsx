@@ -13,12 +13,12 @@ interface PostCardProps {
 function PostCard({ post }: PostCardProps) {
 	const { title, content, Tag } = post;
 
-	console.log(post);
+	// console.log(post);
 	return (
 		<div className="card bg-base-100 w-full shadow-xl border">
 			<div className="card-body">
 				<h2 className="card-title">{title}</h2>
-				<p>{content}</p>
+				<p>{content.slice(0, 40)}</p>
 				<div className="card-actions justify-end">
 					<div className="badge badge-accent">{Tag.name}</div>
 					<Link href={`/blog/${post.id}`} className="hover:underline">

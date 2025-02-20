@@ -45,3 +45,21 @@ export async function PATCH(req: Request, context: ContextProps) {
 		return NextResponse.json({ massage: 'not delete post' }, { status: 500 });
 	}
 }
+
+export async function GET(req: Request, context: ContextProps) {
+	try {
+		const { params } = context;
+		const post = await db.post.findFirst({
+			where: {
+				id: params.postId,
+			},
+			include: {
+				Tag: true,
+			},
+		});
+		// console.log('post', post);
+		return NextResponse.json(post, { status: 200 });
+	} catch (error) {
+		return NextResponse.json({ massage: 'not fetch' }, { status: 500 });
+	}
+}

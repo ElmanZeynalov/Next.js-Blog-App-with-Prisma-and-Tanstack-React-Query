@@ -25,9 +25,10 @@ async function getPost(id: string) {
 }
 
 async function BlogDetailPage({ params }: BlogDetailPageProps) {
-	console.log('params', params.id);
+	// console.log('params', params.id);
 
-	const post = await getPost(params.id);
+	const { id } = params;
+	const post = await getPost(id);
 	// console.log('posts', posts);
 
 	return (
@@ -38,7 +39,7 @@ async function BlogDetailPage({ params }: BlogDetailPageProps) {
 			</div>
 			<span className="badge badge-accent">{post?.Tag.name}</span>
 			<p className="text-slate-700">{post?.content}</p>
-			<ButtonAction id={params.id} />
+			<ButtonAction id={id} />
 		</div>
 	);
 }

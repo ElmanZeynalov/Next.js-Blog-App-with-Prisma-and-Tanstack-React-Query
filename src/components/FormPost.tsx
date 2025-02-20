@@ -10,10 +10,13 @@ import Loading from '@/components/Loading';
 interface FormPostProps {
 	submit: SubmitHandler<FormInputPost>;
 	isEditing: boolean;
+	initialValue?: FormInputPost;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
-	const { register, handleSubmit } = useForm<FormInputPost>();
+const FormPost: FC<FormPostProps> = ({ submit, isEditing, initialValue }) => {
+	const { register, handleSubmit } = useForm<FormInputPost>({
+		defaultValues: initialValue,
+	});
 
 	//fetch list tags
 
@@ -24,7 +27,7 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
 			return response.data;
 		},
 	});
-	console.log('datatags', dataTags);
+	// console.log('datatags', dataTags);
 
 	return (
 		<form onSubmit={handleSubmit(submit)} className="flex flex-col items-center justify-center gap-5 mt-10">
